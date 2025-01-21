@@ -1,0 +1,164 @@
+* {
+    margin: 0;
+    /* background-color:#0B0C10; */
+
+}
+
+.navbar {
+    height: 100px;
+    background-color: rgb(236, 224, 225);
+    display: flex;
+    justify-content: space-around;
+    position: sticky;
+}
+
+.navbar a {
+    text-decoration: none;
+    color: black;
+}
+
+.navbar div {
+    color: black;
+    padding-top: 30px;
+    font-weight: 800;
+    font-size: 20px;
+}
+
+.navbar a:hover {
+    font-size: 20px;
+    text-decoration: overline underline;
+    font-family: Segoe Print;
+}
+
+
+.wlc {
+    width: 100%;
+    height: auto;
+    text-align: center;
+    background-color: rgb(246, 239, 245);
+}
+
+.wlc p {
+    font-size: 200px;
+    font-family: Monospace;
+    color: black;
+}
+
+/* .intro1{
+    width: 70%;
+    height: 300px;
+    background-color: aqua;
+    margin: 30px;
+    float: left;
+
+} */
+
+.intro {
+    width: 100%;
+    height: 600px;
+    background-color: black;
+}
+
+.intro p {
+    color: white;
+}
+
+.intro1 {
+    margin: 10px;
+    width: 66%;
+    float: left;
+    /* background: aqua; */
+}
+
+.photo {
+    margin: auto;
+    width: 28%;
+    float: left;
+    /* background-color: yellow; */
+}
+
+.photo {
+    text-align: center;
+    margin: 30px;
+
+}
+
+.photo img {
+    height: 500px;
+    border: 1px solid black;
+    margin-top: 30px;
+    position: relative;
+    border-radius: 999px;
+    transition-duration: 2s;
+    /* animation-name: slideimage;
+    animation-duration: 4s;
+    animation-direction: normal;
+    animation-iteration-count: infinite; */
+}
+
+@keyframes slideimage {
+    0% {
+        left: 00px;
+    }
+
+    50% {
+        left: 1000px;
+    }
+}
+
+.p1 {
+    text-shadow: 10px 10px grey;
+}
+
+#p1 {
+    font-size: 30px;
+
+}
+
+.p2 {
+    text-shadow: 10px 10px grey;
+}
+
+.p3 {
+    text-shadow: 10px 10px grey;
+}
+
+#grad {
+    /* background-image: linear-gradient(to left, rgba(255,0,0,0), rgb(234, 84, 189)); */
+}
+
+.intro1 p {
+    font-weight: 900;
+    line-height: 200px;
+}
+
+#i1 {
+    font-size: 120px;
+    font-family: Corbel;
+    padding-left: 10px;
+}
+
+#i2 {
+    font-size: 100px;
+    padding-left: 60px;
+}
+
+#i3 {
+    font-size: 100px;
+    padding-left: 90px;
+}
+
+.intro:hover {
+
+    p,
+    span {
+        color: black
+    }
+
+    background-color: grey;
+}
+
+.photo img:hover {
+    border-radius: 0px;
+    border: 5px solid white;
+}

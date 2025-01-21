@@ -1,0 +1,254 @@
+
+// import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+// import { faEye, faEdit, faTrash } from '@fortawesome/free-solid-svg-icons';
+// import React, { useState, useEffect } from 'react';
+// // import { Modal, Button, Form } from 'react-bootstrap';
+// import { useNavigate } from 'react-router-dom';
+// import { toast, ToastContainer } from 'react-toastify';
+// import 'react-toastify/dist/ReactToastify.css';
+// import ApiServices from './ApiServices';
+// const ManageTask = () => {
+//   const navigate = useNavigate();
+//   const[allprojects,setallprojects] = useState([])
+//   const[allemployees,setEmployeesss] =useState([])
+//   const[allsubcategories,setsubcategoriess] =useState([])
+//   const [isUpdate,setIsUpdate]=useState(false)
+//     const [editingTask, seteditingTask] = useState(null);
+//   const[tasks,setalltasks]=useState([])
+//   const [newProject, setProject] = useState('');
+//   const [newEmployee, setEmployee] = useState('');
+//   const [title, settitle] = useState('');
+//   const [description, setNewDescription] = useState('');
+//   const [deadline, setdeadline] = useState('');
+//   const [subcategory, setsubcategory] = useState('');
+//   // const [newEmployeeJoindate, setNewEmployeeJoinDate] = useState('');
+//   const [imageFile, setImageFile] = useState(null);
+//   const [imageName, setImageName] = useState('');
+//   const nav = useNavigate();
+//   const changeImg = (e) => {
+//     const file = e.target.files[0];
+//     setImageFile(file);
+//     setImageName(file.name);
+//   };
+//   useEffect(()=>{
+//     var token = sessionStorage.getItem("token")
+//     ApiServices.getAlllTasks(null,{headers : {authorization:token}})
+//     .then(res =>{
+//       console.log("all tasks",res);
+//       setalltasks(res.data.data);
+//     })
+//   },[isUpdate])
+//   useEffect(()=>{
+//     var token = sessionStorage.getItem("token");
+//     ApiServices.getAllprojects(null,{Headers:{authorization:token}})
+//     .then((res)=>{
+//       console.log("all projects",res);
+//       setallprojects(res.data.data);
+//     })
+//     ApiServices.getEmployee(null,{Headers:{authorization:token}})
+//     .then((res)=>{
+//       console.log("all Employess",res);
+//       setEmployeesss(res.data.data);
+//     })
+//     ApiServices.getSubCategory(null,{Headers:{authorization:token}})
+//     .then((res)=>{
+//       console.log("all Subcategories",res);
+//       setsubcategoriess(res.data.data);
+//     })
+//   },[])
+
+//   const handleEdit = (task) => {
+//     seteditingTask(task);
+
+//   };
+
+//   const handleSave = () => {
+//     // const updatedTasks = tasks.map((task) =>
+//     //   task.id === editingTask.id
+//     //     ? {
+//     //         ...task,
+//     //         title: newTitle,
+//     //         description: newDescription,
+//     //         priority: newPriority,
+//     //         dueDate: newDueDate
+//     //       }
+//     //     : task
+//     // );
+//     setTasks(updatedTasks);
+//     seteditingTask(null);
+//     clearFormData();
+//   };
+
+//   const handleCancel = () => {
+//     seteditingTask(null);
+//     clearFormData();
+//   };
+
+//   const clearFormData = () => {
+//     // setNewTitle('');
+//     // setNewDescription('');
+//     // setNewPriority('Low');
+//     // setNewDueDate('');
+//   };
+
+//   const handleDelete = (id) => {
+//     // setTasks(tasks.filter(task => task.id !== id));
+//   };
+
+//   return (
+//     <main id="main" className="main">
+//       <div className="pagetitle">
+//         <h1>Manage Employee</h1>
+//         <nav>
+//           <ol className="breadcrumb">
+//             <li className="breadcrumb-item">
+//               <a href="index.html">Employee</a>
+//             </li>
+//             <li className="breadcrumb-item active">Manage Employee</li>
+//           </ol>
+//         </nav>
+//       </div>
+//       <div className="container">
+//         <div className="row justify-content-center">
+//           <div className="col-lg-12 mt-5">
+//             <table className="table table-hover table-responsive table-striped">
+//               <thead className="table-dark">
+//                 <tr>
+//                   <th>#</th>
+//                   <th>Project</th>
+//                   <th>Employee</th>
+//                   <th>Subcategory</th>
+//                   <th>Title</th>
+//                   <th>Description</th>
+//                   <th className="text-nowrap">Attachment</th>
+//                   {/* <th>Attachment</th> */}
+//                   <th>Deadline</th>
+//                   <th>Action</th>
+//                 </tr>
+//               </thead>
+//               <tbody>
+//                 {tasks.map((employee,index) => (
+//                   <tr key={employee.id}>
+//                     <td>{index+1}</td>
+//                     <td>{employee.projectId ? employee.projectId.name:"N/A" }</td>
+//                     <td>{employee.employeeId ? employee.employeeId.name:"N/A" }</td>
+//                     <td>{employee.subcategoryId ? employee.subcategoryId.name:"N/A" }</td>
+//                     <td>{employee.title}</td>
+//                     <td>{employee.description}</td>
+//                     <td><img src={BASE_URL+employee.attachment} alt={employee.name} style={{ maxWidth: '50px', maxHeight: '50px' }} /></td>
+//                     <td>{employee.deadline}</td>
+//                     {/* <td>{employee.userId}</td> */}
+                    
+                   
+//                     {/* <td>{employee.userId}</td> */}
+//                     <td>
+//                       <div className="btn-group">
+//                         <button className="btn btn-primary" onClick={() => handleEdit(employee._id)}><FontAwesomeIcon icon={faEdit} /></button>
+//                         <button className="btn btn-primary" onClick={() => handleDelete(employee._id)}><FontAwesomeIcon icon={faTrash} /></button>
+//                       </div>
+//                     </td>
+//                   </tr>
+//                 ))}
+//               </tbody>
+//             </table>
+//           </div>
+//         </div>
+//       </div>
+//       {/* Modal for editing employee */}
+//       {editingTask && (
+//         <div className="modal fade show" tabIndex="-1" role="dialog" style={{ display: 'block', backgroundColor: 'rgba(0, 0, 0, 0.5)' }}>
+//           <div className="modal-dialog" role="document">
+//             <div className="modal-content">
+//               <div className="modal-header">
+//                 {/* <h5 className="modal-title">Edit Employee: {editingEmployee.name}</h5> Display employee name */}
+//                 <button type="button" className="close" onClick={handleCancel}>
+//                   <span aria-hidden="true">&times;</span>
+//                 </button>
+//               </div>
+//               <div className="modal-body">
+//               <form className="add-employee-form bg-light rounded p-4 shadow">
+//               <h3 className="mb-4 mt-2">Add New Task</h3>
+//               <label>Select Employee</label>
+//               <select value={newEmployee} className='form-control'
+//                 onChange={(e) => setEmployee(e.target.value)}>
+//                   <option>select employee</option>
+//                   {
+//                       allemployees.map((project)=>(
+//                         <>
+//                         <option value={project._id}>{project.name}</option>
+//                         </>
+//                       ))
+//                   }
+//               </select>
+             
+//                <label>Select Project</label>
+//                <select value={newProject} className='form-control'
+//                 onChange={(e) => setProject(e.target.value)}>
+                  
+//                   <option disabled={true} selected>select Project</option>
+//                   {
+//                       allprojects.map((project)=>(
+//                         <>
+//                         <option value={project._id}>{project.name}</option>
+//                         </>
+//                       ))
+//                   }
+//               </select>
+//               <label>Title</label>
+//               <input
+//                 type="text"
+//                 className="form-control mb-3"
+//                 placeholder="Task Title"
+//                 value={title}
+//                 onChange={(e) => settitle(e.target.value)}
+//               />
+//               <label>Description</label>
+//               <input
+//                 type="text"
+//                 className="form-control mb-3"
+//                 placeholder="Description"
+//                 value={description}
+//                 onChange={(e) => setNewDescription(e.target.value)}
+//               />
+//               <label>Deadline</label>
+//               <input
+//                 type="date"
+//                 className="form-control mb-3"
+//                 placeholder="Deadline"
+//                 value={deadline}
+//                 onChange={(e) => setdeadline(e.target.value)}
+//               />
+            
+//               <label>Select Subcategory</label>
+//               <select value={subcategory} className='form-control'
+//                 onChange={(e) => setsubcategory(e.target.value)}>
+//                   <option>select Subcategory</option>
+//                   {
+//                       allsubcategories.map((project)=>(
+//                         <>
+//                         <option value={project._id}>{project.name}</option>
+//                         </>
+//                       ))
+//                   }
+//               </select>
+//               <label>Image</label>
+//               <input
+//                   type="file"
+//                   className="form-control mb-3"
+//                   onChange={changeImg}
+//                 />
+//             </form>
+//               </div>
+//               <div className="modal-footer">
+//                 <button type="button" className="btn btn-primary" onClick={handleSave}>Save changes</button>
+//                 <button type="button" className="btn btn-secondary" onClick={handleCancel}>Cancel</button>
+//               </div>
+//             </div>
+//           </div>
+//         </div>
+//       )}
+//     </main>
+//   );
+// };
+
+// export default ManageTask;
