@@ -1,7 +1,7 @@
 const userModel = require('../user/userModel')
 const bcrypt = require('bcrypt')
 const jwt = require('jsonwebtoken')
-const SECRET = "29834hdiusefh&%&^%#&^jshd8w94323J*#("
+const SECRET = process.env.JWT_SECRET || "29834hdiusefh&%&^%#&^jshd8w94323J*#("
 
 //user login
 const login = (req, res) => {
